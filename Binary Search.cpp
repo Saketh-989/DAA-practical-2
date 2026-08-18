@@ -1,42 +1,41 @@
-#include <iostream>
-#include <vector>
+def binary_search(arr, key):
+    low = 0
+    high = len(arr) - 1
 
-int binarySearch(const std::vector<int>& arr, int target) {
-    int low = 0;
-    int high = arr.size() - 1;
+    while low <= high:
+        mid = (low + high) // 2
 
-    while (low <= high) {
-    
-        int mid = low + (high - low) / 2;
+        if arr[mid] == key:
+            return mid
+        elif arr[mid] < key:
+            low = mid + 1
+        else:
+            high = mid - 1
 
-        if (arr[mid] == target) {
-            return mid;
-        }
-        
-        if (arr[mid] < target) {
-            low = mid + 1;
-        } 
-    
-        else {
-            high = mid - 1;
-        }
-    }
+    return -1
 
-    return -1;
-}
 
-int main() {
-    
-    std::vector<int> data = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
-    int target = 91;
+n = int(input("Enter the number of elements: "))
 
-    int result = binarySearch(data, target);
+arr = []
 
-    if (result != -1) {
-        std::cout << "Element found at index: " << result << std::endl;
-    } else {
-        std::cout << "Element not found in the array." << std::endl;
-    }
+print("Enter", n, "elements in sorted order:")
+for i in range(n):
+    arr.append(int(input()))
 
-    return 0;
-}
+key = int(input("Enter the element to search: "))
+
+result = binary_search(arr, key)
+
+if result != -1:
+    print("Element found at position:", result + 1)
+else:
+    print("Element not found")
+
+print("\nTime Complexity:")
+print("Best Case: O(1)")
+print("Average Case: O(log n)")
+print("Worst Case: O(log n)")
+print("Space Complexity: O(1)")
+
+print("\nEnrollment Number: 92400118506")
